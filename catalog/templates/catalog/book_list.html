@@ -1,0 +1,18 @@
+{%  extends "catalog/base_generic.html"  %}
+
+{% block title %}
+    <title>Local Library - Books List</title>
+{% endblock title %}
+
+{% block content %}
+  <h2>Dynamic content</h2>
+    {% if books %}
+      <p>The library has the following Books:</p>
+      Total Books: {{ books.count }}
+      <ul>
+          {% for book in books %}
+             <li> <a href="{% url 'book-detail' book.id %}">{{ book.title }}</a> ({{book.author}})</li>
+          {% endfor %}
+      </ul>
+    {% endif %}
+{% endblock content %}
